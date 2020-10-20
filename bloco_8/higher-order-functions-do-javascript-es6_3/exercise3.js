@@ -63,16 +63,15 @@ const books = [
   },
 ];
 
-function allNames() {
-  const library = books
-    .map((book) => book.author.name)
-    .reduce((previlValue, currentValue) => `${previlValue}, ${currentValue}`);
+const expected_result = 43;
 
-  return `Nomes: ${library}.`;
+function averageAge() {
   // escreva seu código aqui
+  const sum = books
+    .map((book) => ({ age: book.releaseYear - book.author.birthYear }))
+    .map((book) => book.age)
+    .reduce((previousValue, currentValue) => previousValue + currentValue);
+  return sum / books.length;
 }
 
-assert.deepEqual(
-  allNames(),
-  'Nomes: George R. R. Martin, J. R. R. Tolkien, Isaac Asimov, Frank Herbert, Stephen King, H. P. Lovecraft.',
-);
+assert.equal(averageAge(), expected_result);

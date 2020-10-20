@@ -34,7 +34,6 @@ const books = [
   {
     id: 4,
     name: 'Duna',
-    genre: 'Ficção Científica',
     author: {
       name: 'Frank Herbert',
       birthYear: 1920,
@@ -63,16 +62,25 @@ const books = [
   },
 ];
 
-function allNames() {
-  const library = books
-    .map((book) => book.author.name)
-    .reduce((previlValue, currentValue) => `${previlValue}, ${currentValue}`);
+const expected_result = {
+  author: {
+    birthYear: 1948,
+    name: 'George R. R. Martin',
+  },
+  genre: 'Fantasia',
+  id: 1,
+  name: 'As Crônicas de Gelo e Fogo',
+  releaseYear: 1991,
+};
 
-  return `Nomes: ${library}.`;
+function longestNamedBook() {
   // escreva seu código aqui
+  return books.reduce((biggestBook, currentBook) => {
+    if (currentBook.name.length > biggestBook.name.length) {
+      return currentBook;
+    }
+    return biggestBook;
+  });
 }
 
-assert.deepEqual(
-  allNames(),
-  'Nomes: George R. R. Martin, J. R. R. Tolkien, Isaac Asimov, Frank Herbert, Stephen King, H. P. Lovecraft.',
-);
+assert.deepEqual(longestNamedBook(), expected_result);
