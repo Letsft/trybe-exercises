@@ -1,4 +1,3 @@
-
 const myFizzBuzz = require('./myFizzBuzz');
 
 test('if it returns fizzbuzz', () => {

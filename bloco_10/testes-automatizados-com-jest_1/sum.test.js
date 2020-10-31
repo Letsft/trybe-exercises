@@ -8,5 +8,4 @@ test('parameters must be numbers', () => {
   expect(() => {
     sum(4, '5');
   }).toThrow('parameters must be numbers');
-
 });
