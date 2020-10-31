@@ -10,5 +10,8 @@
       "pretty-quick — staged",
       "git add"
     ]
-  }
+  },
+  "scripts": {
+    "test": "jest"
+    }
 }
